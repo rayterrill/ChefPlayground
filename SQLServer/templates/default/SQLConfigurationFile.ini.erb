@@ -1,0 +1,110 @@
+;SQL Server 2012 Configuration File
+[OPTIONS]
+
+; Specifies a Setup work flow, like INSTALL, UNINSTALL, or UPGRADE. This is a required parameter. 
+
+ACTION="Install"
+
+; Detailed help for command line argument ENU has not been defined yet. 
+
+ENU="True"
+
+; Setup will not display any user interface. 
+
+QUIET="True"
+
+; Setup will display progress only, without any user interaction. 
+
+QUIETSIMPLE="False"
+
+; Specify whether SQL Server Setup should discover and include product updates. The valid values are True and False or 1 and 0. By default SQL Server Setup will include updates that are found. 
+
+UpdateEnabled="True"
+
+; Specifies features to install, uninstall, or upgrade. The list of top-level features include SQL, AS, RS, IS, MDS, and Tools. The SQL feature will install the Database Engine, Replication, Full-Text, and Data Quality Services (DQS) server. The Tools feature will install Management Tools, Books online components, SQL Server Data Tools, and other shared components. 
+
+FEATURES=<%= @sqlFeatures %>
+
+; Displays the command line parameters usage 
+
+HELP="False"
+
+; Specifies that the detailed Setup log should be piped to the console. 
+
+INDICATEPROGRESS="False"
+
+; Specifies that Setup should install into WOW64. This command line argument is not supported on an IA64 or a 32-bit system. 
+
+X86="False"
+
+; Specify that SQL Server feature usage data can be collected and sent to Microsoft. Specify 1 or True to enable and 0 or False to disable this feature. 
+
+SQMREPORTING="False"
+
+; Specify if errors can be reported to Microsoft to improve future SQL Server releases. Specify 1 or True to enable and 0 or False to disable this feature. 
+
+ERRORREPORTING="False"
+
+; Auto-start service after installation.  
+
+AGTSVCSTARTUPTYPE="Automatic"
+
+; CM brick TCP communication port 
+
+COMMFABRICPORT="0"
+
+; How matrix will use private networks 
+
+COMMFABRICNETWORKLEVEL="0"
+
+; How inter brick communication will be protected 
+
+COMMFABRICENCRYPTION="0"
+
+; TCP port used by the CM brick 
+
+MATRIXCMBRICKCOMMPORT="0"
+
+; Startup type for the SQL Server service. 
+
+SQLSVCSTARTUPTYPE="Automatic"
+
+; Level to enable FILESTREAM feature at (0, 1, 2 or 3). 
+
+FILESTREAMLEVEL="0"
+
+; Set to "1" to enable RANU for SQL Server Express. 
+
+ENABLERANU="False"
+
+; Specifies a Windows collation or an SQL collation to use for the Database Engine. 
+
+SQLCOLLATION="SQL_Latin1_General_CP1_CI_AS"
+
+; Windows account(s) to provision as SQL Server system administrators. 
+
+SQLSYSADMINACCOUNTS=<%= @sqlAdmin %>
+
+; The default is Windows Authentication. Use "SQL" for Mixed Mode Authentication. 
+
+SECURITYMODE="SQL"
+
+; SA Password
+
+SAPWD="<%= @saPassword %>"
+
+; Provision current user as a Database Engine system administrator for SQL Server 2012 Express. 
+
+ADDCURRENTUSERASSQLADMIN="False"
+
+; Specify 0 to disable or 1 to enable the TCP/IP protocol. 
+
+TCPENABLED="1"
+
+; Specify 0 to disable or 1 to enable the Named Pipes protocol. 
+
+NPENABLED="1"
+
+; Startup type for Browser Service. 
+
+BROWSERSVCSTARTUPTYPE="Disabled"
